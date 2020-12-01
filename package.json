@@ -24,6 +24,7 @@
   "homepage": "https://github.com/guillenjoshua/MainHustle#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "mongoose": "^5.11.0",
     "nodemon": "^2.0.6",
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0"
