@@ -9,7 +9,9 @@
   },
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "server": "nodemon server.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -23,8 +25,10 @@
   },
   "homepage": "https://github.com/guillenjoshua/MainHustle#readme",
   "dependencies": {
+    "concurrently": "^5.3.0",
     "cookie-session": "^1.4.0",
     "express": "^4.17.1",
+    "http-proxy-middleware": "^1.0.6",
     "mongoose": "^5.11.0",
     "nodemon": "^2.0.6",
     "passport": "^0.4.1",
