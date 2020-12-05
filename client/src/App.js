@@ -1,20 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Header from './components/Header'
+import Dashboard from './components/Dashboard'
+import FrontPage from './components/FrontPage'
+import {BrowserRouter, Route} from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Enter OAuth Flow
-        </p>
-        <a href="/auth/google">
-          Google Sign In
-        </a>
-      </header>
+
+
+
+export default () => {
+
+    return (
+    <div className='container'>
+        <Header />
+        <BrowserRouter>
+        <div>
+            <Route exact path='/' component={FrontPage} />
+            <Route exact path='/dashboard' component={Dashboard} />
+        </div>
+        </BrowserRouter>
     </div>
-  );
-}
+    )
 
-export default App;
+
+}
