@@ -3,8 +3,20 @@ const { Schema } = mongoose;
 
 
 const userSchema = new Schema ({
-    googleId: String 
+    googleId: String,
+    displayName: {
+        type: String,
+        required: true,
+    },
+    email: {
+        type: String,
+        required: true,
+    },
+    products: [{
+        type: mongoose.Types.ObjectId,
+        ref: "Product"
+    }]
 }); 
 
-
-mongoose.model('users', userSchema)
+const User = mongoose.model('User', userSchema)
+module.exports = User 
