@@ -1,10 +1,12 @@
 import React from 'react'
+import { Button } from 'antd';
+
 
 
 function Login ({handleClick}) {
 
     return (
-            <a href='/auth/google' onClick={handleClick}>Login</a>
+            <Button type="primary" shape="round" href='/auth/google' onClick={handleClick}>Login</Button>
     )
 } 
 

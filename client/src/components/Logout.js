@@ -1,10 +1,10 @@
 import React from 'react'
-
+import { Button } from 'antd';
 
 function Logout ({handleClick}) {
 
     return (
-        <a href='/api/logout' onClick={handleClick}>Logout</a>
+        <Button type="primary" shape="round" href='/api/logout' onClick={handleClick}>Logout</Button>
     )
 } 
 

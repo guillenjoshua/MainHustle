@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import Login from './Login';
 import Logout from './Logout'
+import { Button } from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
 
 
 
@@ -31,7 +33,10 @@ const Header = () => {
                             <Login handleClick={handleClick} />
                         )}
                     </li>
-
+                    <li>
+                        <Button type="primary" shape="round" icon={<UploadOutlined />} href="/product/upload"></Button>
+                    </li>
+                
                     {/* <li>            
                         <a href='/auth/google'>Google Login</a>
                     </li>

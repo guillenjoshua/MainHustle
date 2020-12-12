@@ -1,43 +1,72 @@
-import React, {useEffect, useState} from 'react'
-import API from '../utils/Api'
+import React, {useEffect, useState} from 'react';
+import Axios from 'axios'; 
+import { Row, Col, Card } from 'antd';
 
-
+const {Meta} = Card;
 
 const Dashboard = () => {
 
-    const [user, setUser] = useState(); 
     const [products, setProducts] = useState([]);
-    const [error, setError] = useState("");
 
 
-    useEffect((user) => {
+    useEffect(() => {
 
-        API.getCurrentUser()
-        .then(res => {
-            
-            setProducts(res.data.products)
+        Axios.get("/api/product/getProducts")
+        .then(response => {
+            console.log(response)
+            if (response.data.success) {
+                setProducts(response.data.product)
+
+                console.log(response.data.product)
+
+            } else {
+                alert('No Products Available')
+            }
         })
-        .catch(err => setError(err))
 
-    }, [user])
+    }, [])
 
 
-    const renderedProducts = products.map((result) => {
-        return (
-            <div className='item'>
-                <div className='content'>
-                    {result.products}
-                </div> 
-            </div>
-        )
-    })
+
+    const renderCards = products.map((product, index) => {
+
+            return (
+
+            <Col lg={6} md={8} xs={18}>
+                <Card 
+                hoverable={true}
+                style={{width: 200}}
+                cover={<a href={`/product/${product._id}`}>
+                    {<img alt="ProductImg" src={`/${product.image}`} />}
+                </a>}
+                >
+                    
+                <Meta 
+                title={product.title}
+                description={`$${product.price}`}
+                />
+
+                </Card>
+            </Col>
+            )
+         })
     
     return(
         <div>
-            <div className='ui celled list'>
-          This is the Dashboard
-          {renderedProducts}
+           <br />
+           <div style={{textAlign: 'center', marginBottom: '3rem'}}>
+            Welcome To Your Dashboard
             </div>
+            {products.length === 0 ?
+            <div> 
+                Nothing To Show Right Now
+            </div> :
+            <div>
+                <Row gutter={[16, 24]}>
+                {renderCards}
+                </Row>
+            </div>
+             } 
         </div>
     )
 }
