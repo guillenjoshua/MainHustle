@@ -3,6 +3,10 @@ const { Schema } = mongoose
 
 const productSchema = new Schema ({
     name: { 
+        type: mongoose.Types.ObjectId,
+        ref: "User"
+    },
+    title: {
         type: String,
         required: true,
     },
@@ -11,12 +15,14 @@ const productSchema = new Schema ({
         required: true,
     },
     image: {
-        type: String,
-        required: false,
+        type: Array,
+        default: [],
+        required: false
     },
     price: {
         type: Number,
         required: true,
+        default: 0
     },
     category: {
         type: String,
@@ -24,14 +30,16 @@ const productSchema = new Schema ({
     },
     type: {
         type: String,
-        required: true,
+        required: false,
         defaultValue: "Seller"
     },
     shippings: {
         type: mongoose.Types.ObjectId,
         ref: "Shipping"
     }
-})
+}, {timestamps: true})
+
+
 const Product = mongoose.model('Product', productSchema)
 
 module.exports = Product
