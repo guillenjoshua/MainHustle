@@ -1,14 +1,14 @@
 const router = require("express").Router();
-// const express = require('express');
-// const router = express.Router();
 const Product  = require("../models/Product");
 const multer = require('multer');
+const path = require('path');
 
 
 
+ //Code with Storage Disk
     const storage = multer.diskStorage({
         destination: (req, file, cb) => {
-            cb(null, 'uploads/')
+            cb(null, path.join(__dirname,'../client/public/uploads'))
         },
         filename: (req, file, cb) => {
             cb(null, `${Date.now()}_${file.originalname}`)
@@ -39,22 +39,24 @@ const multer = require('multer');
             // console.log(err)
             if (err) return res.status(400).json({ success: false, err })
             return res.status(200).json({ success: true })
-
         })
-           
-    
     });
     
+
 
     //Dont Touch This
     router.post("/uploadImage", (req, res) => {
 
-        upload(req, res, err => { 
-         if(err) {
-             return res,json({ sucess:false, err})
-         }
-             return res.json({ success: true, image: res.req.file.path, filename: res.req.file.filename})
-        })
+      upload(req, res, err => {
+        console.log('file sent/saved to AWS: ', req.files);
+        if (err) {
+            return res.json({ success: false, err })
+        }
+        
+        return res.json({ success: true, image: res.req.file.path, fileName: res.req.file.filename })  //req.file.key 
+    })
+
+ 
      })
 
 
