@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import { CloudUploadOutlined } from '@ant-design/icons';
-import { Upload } from 'antd';
 import Dropzone from 'react-dropzone';
 import Axios from 'axios';
 
@@ -18,13 +17,15 @@ function FileUpload(props) {
             header: { 'content-type': 'multipart/form-data' }
         }
         formData.append("file", file[0])
-        //save the Image we chose inside the Node Server 
+        //save image inside the Node Server 
         Axios.post('/api/product/uploadImage', formData, config)
             .then(response => {
-                if (response.data.success) {
+                if (response) {  //response.data.success
                     setImage([...image, response.data.image])
                     props.refreshFunction([...image, response.data.image])
-                } 
+                } else {
+                     alert('Failed to save the Image in Server')
+                }
             })
     
         }
@@ -37,10 +38,12 @@ function FileUpload(props) {
                 maxSize={800000000}
             >
                 {({ getRootProps, getInputProps }) => (
-                    <div style={{width: '100px', height: '100px', border: '1px solid lightgray', cursor: 'pointer'}} {...getRootProps()}>
+                    <div style={{width: '100px', height: '100px', border: '1px solid lightgray',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    backgroundColor: "rgba(1,1,1,0.3)", borderRadius: "10px"}} {...getRootProps()}>
                         <input {...getInputProps()} />
                         <div style={{ width: '50px', height: '50px'}} >
-                            <CloudUploadOutlined />
+                            <CloudUploadOutlined style={{ fontSize: '3.2rem', cursor: "pointer" }}/>
                             <div >Upload</div>
                         </div>
                     </div>
@@ -48,17 +51,19 @@ function FileUpload(props) {
             </Dropzone>
 
             <div style={{ display: 'flex', width: '100px', height:'100px' }}>
-                    {image.map((image, index) => (
-                    <div>
-                        {/* <Upload listType="picture-card" fileList={image} /> */}
-                        {/* <Modal visible={image} /> */}
-                        <img  style={{ width: '100px', height: '100px'}}   src={`/${image}`} alt={`productImg-${index}`} />
+                    {image.map((image, index) => {
+                         let  picture = image.split("\\")
+                         console.log(picture)
+                 return   <div>
+                     
+                        <img  style={{ width: '100px', height: '100px', disply: 'none'}}   src={"/uploads/" + picture[picture.length-1]} alt={`productImg-${index}`} />
                     </div>
-                    ))}
+                    } ) }
             </div>    
 
         </div>
     )
 }
+
 
 export default FileUpload

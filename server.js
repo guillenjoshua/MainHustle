@@ -4,6 +4,8 @@ const cookieSession = require('cookie-session');
 const passport = require('passport'); 
 const keys = require('./config/keys');
 require('./services/passport');
+const cors = require("cors");
+
 
 mongoose.connect(keys.mongoURI); 
 const app = express();
@@ -18,8 +20,11 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session()); 
 
+app.use(cors());
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 
 require('./routes/authRoutes')(app); 
 

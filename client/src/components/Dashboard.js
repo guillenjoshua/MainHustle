@@ -29,7 +29,8 @@ const Dashboard = () => {
 
 
     const renderCards = products.map((product, index) => {
-
+             
+        let  picture = product.image.join("").split("\\")
             return (
 
             <Col lg={6} md={8} xs={18}>
@@ -37,7 +38,7 @@ const Dashboard = () => {
                 hoverable={true}
                 style={{width: 200}}
                 cover={<a href={`/product/${product._id}`}>
-                    {<img alt="ProductImg" src={`/${product.image}`} />}
+                    {<img style={{width: '100%'}} alt="ProductImg" src={`/uploads/${picture[picture.length-1]}`} />}
                 </a>}
                 >
                     
