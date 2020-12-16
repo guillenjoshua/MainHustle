@@ -5,7 +5,7 @@ const passport = require('passport');
 const keys = require('./config/keys');
 require('./services/passport');
 const cors = require("cors");
-
+const path = require('path');
 
 mongoose.connect(keys.mongoURI); 
 const app = express();
