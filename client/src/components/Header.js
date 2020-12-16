@@ -37,7 +37,7 @@ const Header = () => {
                         <Button type="primary" shape="round" icon={<UploadOutlined />} href="/product/upload"></Button>
                     </li>
                     <li>
-                        <Badge count={0} showZero >
+                        <Badge count={0} >
                         <Button type="primary" shape="round" icon={<ShoppingCartOutlined />} href="/user/cart"></Button>
                         </Badge>
                     </li>

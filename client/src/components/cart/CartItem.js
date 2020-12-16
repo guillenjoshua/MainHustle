@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../../contexts/CartContext';
+import {Button} from 'antd';
+import { PlusOutlined, MinusOutlined, DeleteOutlined } from '@ant-design/icons';
 
 
 
@@ -28,35 +30,35 @@ const CartItem = ({product}) => {
                 <p className="mb-1">Price: ${product.price} </p>
                 
             </div>
-            {/* <div className="col-sm-2 p-2 text-center ">
+            <div className="col-sm-2 p-2 text-center ">
                  <p className="mb-0">Qty: {product.quantity}</p>
-            </div> */}
-            {/* <div className="col-sm-4 p-2 text-right">
-                 <button 
+            </div>
+            <div className="col-sm-4 p-2 text-right">
+                 <Button 
                  onClick={() => increase(product)}
-                 className="btn btn-primary btn-sm mr-2 mb-1">
-                     <PlusCircleIcon width={"20px"}/>
-                 </button>
+                 type="primary" shape="round">
+                     <PlusOutlined width={"20px"}/>
+                 </Button>
 
                  {
                      product.quantity > 1 &&
-                     <button
+                     <Button
                     onClick={() => decrease(product)}
-                    className="btn btn-danger btn-sm mb-1">
-                        <MinusCircleIcon width={"20px"}/>
-                    </button>
+                    type="primary" shape="round">
+                        <MinusOutlined width={"20px"}/>
+                    </Button>
                  }
 
                 {
                      product.quantity === 1 &&
-                     <button
+                     <Button
                     onClick={() => removeProduct(product)}
-                    className="btn btn-danger btn-sm mb-1">
-                        <TrashIcon width={"20px"}/>
-                    </button>
+                    type="danger" shape="round">
+                        <DeleteOutlined width={"20px"}/>
+                    </Button>
                  }
                  
-            </div> */}
+            </div>
         </div>
       
      );

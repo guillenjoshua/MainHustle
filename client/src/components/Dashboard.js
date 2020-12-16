@@ -1,35 +1,45 @@
 import React, {useEffect, useState} from 'react';
-import Axios from 'axios'; 
+import Axios from 'axios';
+import Spinner from './Spinner' 
 import { Row, Col, Card } from 'antd';
 // import DashboardCarousel from '../utils/DashboardCarousel'
+import { Input } from 'antd';
+
+const { Search } = Input;
 
 const {Meta} = Card;
 
 const Dashboard = () => {
 
     const [products, setProducts] = useState([]);
-
+    const [search, setSearch] = useState(""); 
+    
 
     useEffect(() => {
+       
+     
 
-        Axios.get("/api/product/getProducts")
-        .then(response => {
-            console.log(response)
-            if (response.data.success) {
-                setProducts(response.data.product)
-
-                console.log(response.data.product)
-
-            } else {
-                alert('No Products Available')
-            }
-        })
+            Axios.get("/api/product/getProducts")
+            .then(response => {
+                console.log(response)
+                if (response.data.success) {
+                    setProducts(response.data.product)
+                    console.log(response.data.product)
+                } 
+            })
 
     }, [])
 
 
 
-    const renderCards = products.map((product, index) => {
+    
+    const filteredCards = products.filter( product => {
+        return product.title.toLowerCase().includes( search.toLowerCase())
+    })
+
+
+
+    const renderCards = filteredCards.map((product, index) => {
              
         let  picture = product.image.join("").split("\\")
         
@@ -47,7 +57,7 @@ const Dashboard = () => {
                   
                 </a>}
                 >
-                    
+               
                 <Meta 
                 
                 title={product.title}
@@ -60,6 +70,9 @@ const Dashboard = () => {
             </Col>
             )
          })
+
+
+
     
     return(
         <div>
@@ -67,9 +80,23 @@ const Dashboard = () => {
            <div style={{textAlign: 'center', marginBottom: '3rem'}}>
             Welcome To Your Dashboard
             </div>
+
+            {/* SearchBar */}
+            <div>
+                <Search
+                className="input"
+                value={search}
+                onChange={e => setSearch(e.target.value)}
+                />
+            </div>
+
+
+
+
             {products.length === 0 ?
             <div> 
                 Nothing To Show Right Now
+                <Spinner />
             </div> :
             <div>
                 <Row gutter={[16, 24]}>

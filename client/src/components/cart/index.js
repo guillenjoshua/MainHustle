@@ -53,6 +53,7 @@ const { total, cartItems, itemCount, clearCart, checkout, handleCheckout } = use
                                 <p className="mb-1">Total Items</p>
                                 <h4 className=" mb-3 txt-right">{itemCount}</h4>
                                 <p className="mb-1">Total Payment</p>
+                                <h5 className=" mb-3 txt-right">${total}</h5>
                                 <hr className="my-4"/>
                                 <div className="text-center">
                                     <Button type="primary" shape="round" onClick={handleCheckout}>CHECKOUT</Button>

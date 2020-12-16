@@ -210,6 +210,7 @@ function ProductPage(props) {
                     <br />
 
                 {/* <Button type="primary" shape="round" onClick={() => addToCart(product)}>Add to Cart</Button> */}
+                
                 {
                     !isInCart(product) && 
                     <Button 
