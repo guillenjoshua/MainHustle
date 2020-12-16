@@ -35,9 +35,17 @@ require('./routes/authRoutes')(app);
 app.use('/api/product', require('./routes/product'));
 
 
+// app.get("*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "./client/build/index.html"));
+//   });
+
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "./client/build/index.html"));
-  });
+  let url = path.join(__dirname, '../client/build', 'index.html');
+  if (!url.startsWith('/app/')) // since we're on local windows
+    url = url.substring(1);
+  res.sendFile(url);
+});
+
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, function(){
