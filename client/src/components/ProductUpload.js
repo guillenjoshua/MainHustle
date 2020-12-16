@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import FileUpload from '../utils/FileUpload'
 import Axios from "axios"; 
+import {Button} from 'antd'
 
 
 
@@ -48,7 +49,8 @@ function ProductUpload(props) {
     const onSubmit = (event) => {
         event.preventDefault();
 
-        const variables = { 
+        const variables = {
+           
             title: title,
             description: description,
             price: price,
@@ -66,12 +68,15 @@ function ProductUpload(props) {
                     alert('Failed to upload Product')
                 }
             })
-
     }
+
+
     return (
         <div>
             <br />
-            <div className="ui center">Upload Yo MainHustle Product</div>
+            <div style={{textAlign: 'center', marginBottom: '3rem'}}>
+                <h4>Upload Yo MainHustle Product</h4>
+            </div>
 
       
             <form onSubmit={onSubmit}>
@@ -104,7 +109,7 @@ function ProductUpload(props) {
                 <label>Select Category</label>
                 <select className="browser-default" onChange={onCategoryChange} value={category}>
                     {Category.map(item => (
-                        <option key={item.key} value={item.key}>{item.value}</option>
+                        <option key={item.key} value={item.value}>{item.value}</option>
                     ))}
                 </select>
 
@@ -116,10 +121,9 @@ function ProductUpload(props) {
 
                 <FileUpload refreshFunction={onUpdateImage}  />
 
-              
                 <br />
                 <br />
-                <button className="btn waves-effect waves-light" onClick={onSubmit}>Submit</button>
+                <Button type="primary" shape="round" onClick={onSubmit}>Submit</Button>
 
             </form>
 

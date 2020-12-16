@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Product  = require("../models/Product");
+const User = require("../models/User")
 const multer = require('multer');
 const path = require('path');
 
@@ -31,7 +32,6 @@ const path = require('path');
     //Dont Touch This
     router.post("/uploadProduct", (req, res) => {
 
-    
         //Saving client to db
         const product = new Product(req.body)
             // console.log(req.body)
@@ -55,9 +55,7 @@ const path = require('path');
         
         return res.json({ success: true, image: res.req.file.path, fileName: res.req.file.filename })  //req.file.key 
     })
-
- 
-     })
+})
 
 
     //Getting Products for Dashboard
@@ -70,6 +68,46 @@ const path = require('path');
                  res.json({success: true, product})
                })
      })
+
+
+     //This is for the product page 
+     router.get("/products_by_id", (req, res) => {
+
+        let type = req.query.type
+        let productIds = req.query.id 
+
+        if(type === "array") {
+        }
+
+
+        //To find product info that is attache to products id
+                            //$in method will help us find product ids since they are varying
+        Product.find({'_id' : {$in: productIds}})
+        .exec((err, product) => {
+            if(err) return req.status(400).send(err)
+            return res.status(200).send(product)
+
+        })
+    });
+
+
+        //Dont Touch This
+        router.post("/cart", (req, res) => {
+
+            //Saving client to db
+            const userCart = new User(req.body)
+                // console.log(req.body)
+            userCart.save((err) => {
+                // console.log(err)
+                if (err) return res.status(400).json({ success: false, err })
+                return res.status(200).json({ success: true })
+            })
+        });
+
+
+    
+
+
 
 
 module.exports = router; 

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Axios from 'axios'; 
 import { Row, Col, Card } from 'antd';
+// import DashboardCarousel from '../utils/DashboardCarousel'
 
 const {Meta} = Card;
 
@@ -31,6 +32,7 @@ const Dashboard = () => {
     const renderCards = products.map((product, index) => {
              
         let  picture = product.image.join("").split("\\")
+        
             return (
 
             <Col lg={6} md={8} xs={18}>
@@ -38,13 +40,20 @@ const Dashboard = () => {
                 hoverable={true}
                 style={{width: 200}}
                 cover={<a href={`/product/${product._id}`}>
+                  
                     {<img style={{width: '100%'}} alt="ProductImg" src={`/uploads/${picture[picture.length-1]}`} />}
+
+                    {/* <DashboardCarousel images={product.images}/> */}
+                  
                 </a>}
                 >
                     
                 <Meta 
+                
                 title={product.title}
                 description={`$${product.price}`}
+                category={product.category}
+
                 />
 
                 </Card>
@@ -64,7 +73,9 @@ const Dashboard = () => {
             </div> :
             <div>
                 <Row gutter={[16, 24]}>
+             
                 {renderCards}
+               
                 </Row>
             </div>
              } 

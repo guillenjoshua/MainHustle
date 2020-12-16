@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import Login from './Login';
 import Logout from './Logout'
-import { Button } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
+import { Button, Badge } from 'antd';
+import { UploadOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 
 
 
@@ -35,6 +35,11 @@ const Header = () => {
                     </li>
                     <li>
                         <Button type="primary" shape="round" icon={<UploadOutlined />} href="/product/upload"></Button>
+                    </li>
+                    <li>
+                        <Badge count={0} showZero >
+                        <Button type="primary" shape="round" icon={<ShoppingCartOutlined />} href="/user/cart"></Button>
+                        </Badge>
                     </li>
                 
                     {/* <li>            
