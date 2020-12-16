@@ -23,5 +23,5 @@ module.exports = app => {
         res.json(req.user); 
     })
 
-
+   
 }; 
