@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 
 import CartProducts from './CartProducts';
 import { CartContext } from '../../contexts/CartContext';
@@ -13,6 +13,8 @@ function ProductCart(props) {
 // const [product, setProduct] = useState([]);
 const { total, cartItems, itemCount, clearCart, checkout, handleCheckout } = useContext(CartContext);
   
+    // let totalTax =  (total*.0825) 
+    // let totalCost = (total + totalTax)
 
 //   useEffect(() => {
 
@@ -51,9 +53,13 @@ const { total, cartItems, itemCount, clearCart, checkout, handleCheckout } = use
                         <div className="col-sm-3 p-3">
                             <Card>
                                 <p className="mb-1">Total Items</p>
-                                <h4 className=" mb-3 txt-right">{itemCount}</h4>
+                                <h5 className=" mb-3 txt-right">{itemCount}</h5>
                                 <p className="mb-1">Total Payment</p>
                                 <h5 className=" mb-3 txt-right">${total}</h5>
+                                {/* <p className="mb-1">Tax</p>
+                                <p className=" mb-3 txt-right">${totalTax}</p>
+                                <p className="mb-1">Total Cost</p>
+                                <p className=" mb-3 txt-right">${totalCost}</p> */}
                                 <hr className="my-4"/>
                                 <div className="text-center">
                                     <Button type="primary" shape="round" onClick={handleCheckout}>CHECKOUT</Button>
