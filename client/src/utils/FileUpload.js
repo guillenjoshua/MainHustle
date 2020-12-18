@@ -53,10 +53,11 @@ function FileUpload(props) {
             <div style={{ display: 'flex', width: '100px', height:'100px' }}>
                     {image.map((image, index) => {
                          let  picture = image.split("\\")
+                         let pictureTwo = picture[picture.length-1].split("build")
                          console.log(picture)
                  return   <div>
                      
-                        <img  style={{ width: '100px', height: '100px', disply: 'none'}}   src={"/uploads/" + picture[picture.length-1]} alt={`productImg-${index}`} />
+                        <img  style={{ width: '100px', height: '100px', disply: 'none'}}   src={pictureTwo[pictureTwo.length-1]} alt={`productImg-${index}`} />
                     </div>
                     } ) }
             </div>    

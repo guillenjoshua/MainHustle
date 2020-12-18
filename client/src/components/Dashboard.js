@@ -42,7 +42,7 @@ const Dashboard = () => {
     const renderCards = filteredCards.map((product, index) => {
              
         let  picture = product.image.join("").split("\\")
-        
+        console.log(picture)
         let pictureTwo = picture[picture.length-1].split("build")
 
             return (
