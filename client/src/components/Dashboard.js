@@ -43,6 +43,8 @@ const Dashboard = () => {
              
         let  picture = product.image.join("").split("\\")
         
+        let pictureTwo = picture[picture.length-1].split("build")
+
             return (
 
             <Col lg={6} md={8} xs={18}>
@@ -51,7 +53,7 @@ const Dashboard = () => {
                 style={{width: 200}}
                 cover={<a href={`/product/${product._id}`}>
                   
-                    {<img style={{width: '100%'}} alt="ProductImg" src={`/uploads/${picture[picture.length-1]}`} />}
+                    {<img style={{width: '100%'}} alt="ProductImg" src={`${pictureTwo[pictureTwo.length-1]}`} />}
 
                     {/* <DashboardCarousel images={product.images}/> */}
                   
