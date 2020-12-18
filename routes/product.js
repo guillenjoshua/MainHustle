@@ -9,8 +9,9 @@ const path = require('path');
  //Code with Storage Disk
     const storage = multer.diskStorage({
         destination: (req, file, cb) => {
-            cb(null, path.join(__dirname,'../client/public/uploads'))
-        },
+            const uploadPath = process.env.NODE_ENV === "production" ? '../client/build/uploads' :  '../client/public/uploads'
+            cb(null, path.join(__dirname, uploadPath))
+            },
         filename: (req, file, cb) => {
             cb(null, `${Date.now()}_${file.originalname}`)
         },
