@@ -77,8 +77,8 @@ const Dashboard = () => {
     return(
         <div>
            <br />
-           <div style={{textAlign: 'center', marginBottom: '3rem'}}>
-            Welcome To Your Dashboard
+           <div style={{textAlign: 'center', marginBottom: '3rem', fontWeight: "bold"}}>
+            Search MainHustle Products
             </div>
 
             {/* SearchBar */}

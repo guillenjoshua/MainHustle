@@ -1,10 +1,17 @@
 import React from 'react'
 import { Button } from 'antd';
 
-function Logout ({handleClick}) {
+function Logout (props) {
+
+
+    // const handleLogout = (e) => {
+    //     e.preventDefault();
+    //     setLoggedIn(loggedIn);
+    // }
+
 
     return (
-        <Button type="primary" shape="round" href='/api/logout' onClick={handleClick}>Logout</Button>
+        <Button type="primary" shape="round" href='/api/logout' onClick={props.handleClick}>Logout</Button>
     )
 } 
 

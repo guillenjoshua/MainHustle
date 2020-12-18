@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import FileUpload from '../utils/FileUpload'
 import Axios from "axios"; 
 import {Button} from 'antd'
@@ -23,7 +23,24 @@ function ProductUpload(props) {
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState(0); 
     const [category, setCategory] = useState(1)
-    const [image, setImage] = useState()
+    const [image, setImage] = useState(); 
+    const [user, setUser] = useState(); 
+
+
+    useEffect(() => {
+
+        Axios.get(`/api/current_user`)
+            .then(response => {
+                setUser(response.data)
+                console.log(response.data)
+            })
+
+    }, [])
+
+    console.log(user)
+
+
+
 
     const onTitleChange = (event) => {
         setTitle(event.currentTarget.value)
@@ -50,7 +67,7 @@ function ProductUpload(props) {
         event.preventDefault();
 
         const variables = {
-           
+            user: user._id, 
             title: title,
             description: description,
             price: price,
@@ -69,6 +86,11 @@ function ProductUpload(props) {
                 }
             })
     }
+
+
+
+
+
 
 
     return (

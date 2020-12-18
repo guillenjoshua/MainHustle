@@ -11,24 +11,31 @@ import ProductCart from './components/cart'
 
 
 export default () => {
+    // const [loggedIn, setLoggedIn] = useState(
+    //     // initial value
+    //     document.cookie.split(';').some((item) => item.trim().startsWith('logedIn=')));
+
+
 
     return (
-    <div className='container'>
+    <div className="container">
         
         
         <BrowserRouter>
        
         <Header />
-        <div>
             <Switch>
             <Route exact path='/' component={FrontPage} />
             <Route exact path='/dashboard' component={Dashboard} />
             <Route exact path='/product/upload' component={ProductUpload} />
             <Route exact path='/product/:productId' component={ProductPage} />
             <Route exact path='/user/cart' component={ProductCart} />
+            {/* <Route exact path='/login' render={
+            (routeProps) => <LogIn {...{setLoggedIn, ...routeProps}} />
+            } /> */}
+
             </Switch>
-        </div>
-      
+          
         </BrowserRouter>
         
     </div>
