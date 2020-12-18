@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Axios from 'axios';
-import Spinner from './Spinner' 
+import Axios from 'axios'; 
 import { Row, Col, Card } from 'antd';
 // import DashboardCarousel from '../utils/DashboardCarousel'
 import { Input } from 'antd';
@@ -98,7 +97,7 @@ const Dashboard = () => {
             {products.length === 0 ?
             <div> 
                 Nothing To Show Right Now
-                <Spinner />
+              
             </div> :
             <div>
                 <Row gutter={[16, 24]}>
