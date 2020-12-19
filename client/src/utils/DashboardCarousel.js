@@ -15,8 +15,6 @@ function DashboardCarousel(props) {
 
 
             </Carousel>
-
-            
         </div>
     )
 }

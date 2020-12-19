@@ -32,12 +32,12 @@ function ProductUpload(props) {
         Axios.get(`/api/current_user`)
             .then(response => {
                 setUser(response.data)
-                console.log(response.data)
+                // console.log(response.data)
             })
 
     }, [])
 
-    console.log(user)
+ 
 
 
 
