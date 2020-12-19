@@ -39,18 +39,27 @@ const Dashboard = () => {
 
     const renderCards = filteredCards.map((product, index) => {
              
-        let  picture = product.image.join("").split("\\")
-        console.log(picture)
-        let pictureTwo = picture[picture.length-1].split("build")
+        // let  picture = product.image.join("").split("\\")
+        // let imageSrc = ""
+        // // console.log(picture)
+        // // let pictureTwo = picture[picture.length-1].split("build")
 
         // if( process.env.NODE_ENV === "production") {
         //     // If on heroku use one path
         //     let deployeImageUrl= picture[picture.length-1].split("build")
-        //     imageSrc = pictureTwo[pictureTwo.length-1]
+        //     imageSrc = deployeImageUrl[deployeImageUrl.length-1]
         //   } else {
         //     // If local use other path
-        //     imageSrc = `/uploads/${picture[picture.length-1]}`
+            
+        //     let pictureTwo = picture[picture.length-1].split("public")
+        //     imageSrc = encodeURI(`${pictureTwo[pictureTwo.length-1]}`)
         //   }
+
+        let  picture = product.image.join("").split("\\")
+        console.log(picture)
+        let pictureTwo = picture[picture.length-1].split("build")
+
+
 
             return (
 
