@@ -89,6 +89,9 @@ const path = require('path');
             return res.status(200).send(product)
 
         })
+
+
+        
     });
 
 
