@@ -13,7 +13,7 @@ function ProductPage(props) {
     const [product, setProduct] = useState([])
     const { addProduct, cartItems, increase } = useContext(CartContext);
 
-
+    console.log(product.image)
     useEffect(() => {
 
         Axios.get(`/api/product/products_by_id?id=${productId}&type=single`)
@@ -32,7 +32,7 @@ function ProductPage(props) {
         return !!cartItems.find(item => item.id === product.id);
         }
 
-
+        
     return (
         <div style={{width: '100%', padding: '3rem 4rem'}}>
             <div style={{textAlign: 'center', marginBottom: '3rem'}}>
@@ -41,21 +41,21 @@ function ProductPage(props) {
         <br />
 
     <Row gutter={[16, 16]}>
-            <Col lg={12} xs={24}>
-                    Product Image
+            {/* <Col lg={12} xs={24}> */}
+                    {/* Product Image */}
                {/* <ImageGallery  items={image}/> */}
-                <img style={{width: '100%'}} alt="ProductImg" src={`${product.image}`} /> 
+                {/* <img style={{width: '100%'}} alt="ProductImg" src={`${product.image}`} />  */}
                 {/* <ProdPageImage product={product} />
                  */}
-            </Col>
+            {/* </Col> */}
 
 
-            <Col lg={12} xs={24}>
+            <Col lg={24} xs={24}>
 
 
 
                 <Descriptions
-                    title="Item Info"
+                    title="Product Info"
                     bordered
                     layout="vertical"
                     >

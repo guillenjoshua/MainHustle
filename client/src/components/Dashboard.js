@@ -70,9 +70,6 @@ const Dashboard = () => {
                         </div>
                         ))}
                     </Carousel> */}
-
-
-
                   
                 </a>}
                 >

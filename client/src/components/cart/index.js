@@ -4,6 +4,7 @@ import CartProducts from './CartProducts';
 import { CartContext } from '../../contexts/CartContext';
 import { Link } from 'react-router-dom';
 import {Button, Card} from 'antd'
+import StripeCheckout from 'react-stripe-checkout';
 // import Axios from 'axios'
 
 
@@ -37,14 +38,27 @@ const { total, cartItems, itemCount, clearCart, checkout, handleCheckout } = use
                             cartItems.length > 0 ?
                             <CartProducts/> :
                             <div className="p-3 text-center text-muted">
-                                Your cart is empty
+                                {/* Your Cart is Empty */}
                             </div>
                         }
                             <br />
                         { checkout && 
                             <div className="p-3 text-center text-success">
                                 <p>Thanks for Using MainHustle</p>
-                                <Link to="/Dashboard" className="btn btn-outline-success btn-sm">Keep Shopping Yo</Link>
+                            <StripeCheckout
+                                amount={total}
+                                billingAddress
+                                description="MainHustle Payment"
+                                // image="https://yourdomain.tld/images/logo.svg"
+                                locale="auto"
+                                // name="YourDomain.tld"
+                                // stripeKey="your_PUBLISHABLE_stripe_key"
+                                // token={this.onToken}
+                                zipCode
+                            />
+                            <br />
+                            <br />
+                                <Link to="/Dashboard" className="btn btn-outline-success btn-sm">Keep Shopping</Link>
                             </div>
                         }
                     </div>
