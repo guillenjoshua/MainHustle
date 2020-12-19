@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import Axios from 'axios';
-import Spinner from './Spinner' 
-import { Row, Col, Card } from 'antd';
-// import DashboardCarousel from '../utils/DashboardCarousel'
+import Axios from 'axios'; 
+import { Row, Col, Card, Carousel } from 'antd';
 import { Input } from 'antd';
 
 const { Search } = Input;
@@ -42,8 +40,17 @@ const Dashboard = () => {
     const renderCards = filteredCards.map((product, index) => {
              
         let  picture = product.image.join("").split("\\")
-        
+        console.log(picture)
         let pictureTwo = picture[picture.length-1].split("build")
+
+        // if( process.env.NODE_ENV === "production") {
+        //     // If on heroku use one path
+        //     let deployeImageUrl= picture[picture.length-1].split("build")
+        //     imageSrc = pictureTwo[pictureTwo.length-1]
+        //   } else {
+        //     // If local use other path
+        //     imageSrc = `/uploads/${picture[picture.length-1]}`
+        //   }
 
             return (
 
@@ -52,10 +59,20 @@ const Dashboard = () => {
                 hoverable={true}
                 style={{width: 200}}
                 cover={<a href={`/product/${product._id}`}>
-                  
+
                     {<img style={{width: '100%'}} alt="ProductImg" src={`${pictureTwo[pictureTwo.length-1]}`} />}
 
-                    {/* <DashboardCarousel images={product.images}/> */}
+                    {/* <Carousel autoplay>
+                        {picture.map((image, index) => (
+                        <div key={index}>
+                            <img style={{ width: '100%', maxHeight: '150px' }}
+                            src={`${image}`} alt="productImage" />
+                        </div>
+                        ))}
+                    </Carousel> */}
+
+
+
                   
                 </a>}
                 >
@@ -98,7 +115,7 @@ const Dashboard = () => {
             {products.length === 0 ?
             <div> 
                 Nothing To Show Right Now
-                <Spinner />
+              
             </div> :
             <div>
                 <Row gutter={[16, 24]}>

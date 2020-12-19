@@ -13,7 +13,7 @@ const CartItem = ({product}) => {
     
 
     let  picture = product.image.join("").split("\\")
-
+    let pictureTwo = picture[picture.length-1].split("build")
 
 
     return ( 
@@ -23,7 +23,7 @@ const CartItem = ({product}) => {
                 <img
                 alt={product.name}
                 style={{margin: "0 auto", maxHeight: "100px"}} 
-                src={`/uploads/${picture[picture.length-1]}`} className="img-fluid d-block"/>
+                src={`${pictureTwo[pictureTwo.length-1]}`} className="img-fluid d-block"/>
             </div>
             <div className="col-sm-4 p-2">
                 <h5 className="mb-1">{product.title}</h5>

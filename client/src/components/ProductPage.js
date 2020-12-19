@@ -3,31 +3,28 @@ import Axios from 'axios'
 import {Row, Col, Descriptions, Button } from 'antd'
 // import ImageGallery from 'react-image-gallery';
 import  {CartContext} from '../contexts/CartContext';
+// import ProdPageImage from './ProdPageImage'
 
 
 function ProductPage(props) {
 
-
+ 
     const productId = props.match.params.productId
     const [product, setProduct] = useState([])
-    // const [image, setImage] = useState([])
-    // const [cart, setCart] = useState([])
     const { addProduct, cartItems, increase } = useContext(CartContext);
 
-    // const [productImage, setProductImage] = useState([]);
-    
-
-    
 
     useEffect(() => {
 
         Axios.get(`/api/product/products_by_id?id=${productId}&type=single`)
             .then(response => {
                 setProduct(response.data[0])
+                console.log(response.data[0])
             })
-
-
     },[])
+
+   
+
 
 
 
@@ -35,27 +32,6 @@ function ProductPage(props) {
         return !!cartItems.find(item => item.id === product.id);
         }
 
-    // let  picture = product.image.join("").split("\\")
-
-    // const renderImage = (product, index) => {
-             
-    //     let  picture = product.image.join("").split("\\")
-    //     // console.log(picture)
-    //         return (
-
-    //         // <Col lg={6} md={8} xs={18}>
-    //         //     <Card 
-    //         //     hoverable={true}
-    //         //     style={{width: 200}}
-    //         //     >
-    //         <img style={{width: '100%'}} alt="ProductImg" src={`/uploads/${picture[picture.length-1]}`} />         
-
-    //         //     </Card>
-    //         // </Col>
-    //         )
-    //      }
-    
-    
 
     return (
         <div style={{width: '100%', padding: '3rem 4rem'}}>
@@ -68,7 +44,9 @@ function ProductPage(props) {
             <Col lg={12} xs={24}>
                     Product Image
                {/* <ImageGallery  items={image}/> */}
-                <img style={{width: '100%'}} alt="ProductImg" src={`/uploads/ + ${product.image}`} /> 
+                <img style={{width: '100%'}} alt="ProductImg" src={`${product.image}`} /> 
+                {/* <ProdPageImage product={product} />
+                 */}
             </Col>
 
 
@@ -80,12 +58,10 @@ function ProductPage(props) {
                     title="Item Info"
                     bordered
                     layout="vertical"
-
                     >
                     <Descriptions.Item label="Category">{product.category}</Descriptions.Item>
                     <Descriptions.Item label="Product">{product.title}</Descriptions.Item>
                     <Descriptions.Item label="Amount">${product.price}</Descriptions.Item>
-                    
                     <Descriptions.Item label="Description">{product.description}</Descriptions.Item>
                 </Descriptions>
                     <br />
