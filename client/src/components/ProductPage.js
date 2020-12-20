@@ -1,9 +1,9 @@
 import React, {useState, useEffect, useContext} from 'react'
 import Axios from 'axios'
 import {Row, Col, Descriptions, Button } from 'antd'
-// import ImageGallery from 'react-image-gallery';
+import ImageGallery from 'react-image-gallery';
 import  {CartContext} from '../contexts/CartContext';
-// import ProdPageImage from './ProdPageImage'
+import ProdPageImage from './ProdPageImage'
 
 
 function ProductPage(props) {
@@ -23,7 +23,7 @@ function ProductPage(props) {
             })
     },[])
 
-   
+
 
 
 
@@ -43,10 +43,11 @@ function ProductPage(props) {
     <Row gutter={[16, 16]}>
             {/* <Col lg={12} xs={24}> */}
                     {/* Product Image */}
-               {/* <ImageGallery  items={image}/> */}
+               {/* <ImageGallery  items={images}/> */}
+            
                 {/* <img style={{width: '100%'}} alt="ProductImg" src={`${product.image}`} />  */}
-                {/* <ProdPageImage product={product} />
-                 */}
+                {/* <ProdPageImage product={product} /> */}
+                
             {/* </Col> */}
 
 

@@ -13,7 +13,7 @@ const path = require('path');
             cb(null, path.join(__dirname, uploadPath))
             },
         filename: (req, file, cb) => {
-            cb(null, `${Date.now()}_${file.originalname}`)
+            cb(null, `${Date.now()}_${file.fieldname}`)  //file.originalname is the original code and works for heroku deployment
         },
         fileFilter: (req, file, cb) => {
             const ext = path.extname(file.originalname)
