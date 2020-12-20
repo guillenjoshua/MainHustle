@@ -9,11 +9,25 @@ const CartItem = ({product}) => {
 
     const { increase, decrease, removeProduct } = useContext(CartContext);
 
-
-    
-
     let  picture = product.image.join("").split("\\")
-    let pictureTwo = picture[picture.length-1].split("build")
+    let imageSrc = ""
+    // console.log(picture)
+    // let pictureTwo = picture[picture.length-1].split("build")
+
+    if( process.env.NODE_ENV === "production") {
+        // If on heroku use one path
+        let deployeImageUrl= picture[picture.length-1].split("build")
+        imageSrc = deployeImageUrl[deployeImageUrl.length-1]
+      } else {
+        // If local use other path
+        
+        let pictureTwo = picture[picture.length-1].split("public")
+        imageSrc = encodeURI(pictureTwo[pictureTwo.length-1])
+      }
+    
+    //Original code that works on Heroku
+    // let  picture = product.image.join("").split("\\")
+    // let pictureTwo = picture[picture.length-1].split("build")
 
 
     return ( 
@@ -23,7 +37,10 @@ const CartItem = ({product}) => {
                 <img
                 alt={product.name}
                 style={{margin: "0 auto", maxHeight: "100px"}} 
-                src={`${pictureTwo[pictureTwo.length-1]}`} className="img-fluid d-block"/>
+                //Original Code that works on Heroku
+                // src={`${pictureTwo[pictureTwo.length-1]}`} className="img-fluid d-block"/>
+
+                src={`${imageSrc}`} className="img-fluid d-block"/>
             </div>
             <div className="col-sm-4 p-2">
                 <h5 className="mb-1">{product.title}</h5>
