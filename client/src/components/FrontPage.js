@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import Axios from 'axios'; 
-import {Carousel, Card} from 'antd'; 
+// import {Carousel, Card} from 'antd'; 
 import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css'
 
@@ -11,8 +11,6 @@ const FrontPage = () => {
 
     useEffect(() => {
        
-     
-
         Axios.get("/api/product/getProducts")
         .then(response => {
             console.log(response)
@@ -25,24 +23,32 @@ const FrontPage = () => {
     }, [])
 
 
-
     const images = [
         {
           original: 'https://picsum.photos/id/119/1000/600/',
           thumbnail: 'https://picsum.photos/id/119/250/150/',
         },
         {
-          original: 'https://picsum.photos/id/24/1000/600/',
-          thumbnail: 'https://picsum.photos/id/24/250/150/',
+          original: 'https://picsum.photos/id/486/1000/600/',
+          thumbnail: 'https://picsum.photos/id/486/250/150/',
         },
         {
-          original: 'https://picsum.photos/id/1019/1000/600/',
-          thumbnail: 'https://picsum.photos/id/1019/250/150/',
+          original: 'https://picsum.photos/id/96/1000/600/',
+          thumbnail: 'https://picsum.photos/id/96/250/150/'
+        },
+        {
+          original: 'https://picsum.photos/id/367/1000/600/',
+          thumbnail: 'https://picsum.photos/id/367/250/150/'
         },
       ];
 
     return (
         <div>
+          <br />
+          <h5 style={{textAlign: "center"}}>Welcome to MainHustle</h5>
+          <h5 style={{textAlign: "center"}}>A secure place to easily List, Sell and Search for Products  </h5>
+          <br />
+          <br />
             <ImageGallery  items={images} />;
         </div>
     )

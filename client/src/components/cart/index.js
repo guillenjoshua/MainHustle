@@ -14,9 +14,6 @@ function ProductCart(props) {
 // const [product, setProduct] = useState([]);
 const { total, cartItems, itemCount, clearCart, checkout, handleCheckout } = useContext(CartContext);
   
-    // let totalTax =  (total*.0825) 
-    // let totalCost = (total + totalTax)
-
 //   useEffect(() => {
 
 //     Axios.get(`/api/product/products_by_id?id=${productId}&type=single`)
@@ -70,10 +67,6 @@ const { total, cartItems, itemCount, clearCart, checkout, handleCheckout } = use
                                 <h5 className=" mb-3 txt-right">{itemCount}</h5>
                                 <p className="mb-1">Total Payment</p>
                                 <h5 className=" mb-3 txt-right">${total}</h5>
-                                {/* <p className="mb-1">Tax</p>
-                                <p className=" mb-3 txt-right">${totalTax}</p>
-                                <p className="mb-1">Total Cost</p>
-                                <p className=" mb-3 txt-right">${totalCost}</p> */}
                                 <hr className="my-4"/>
                                 <div className="text-center">
                                     <Button type="primary" shape="round" onClick={handleCheckout}>CHECKOUT</Button>

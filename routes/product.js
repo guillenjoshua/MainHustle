@@ -3,6 +3,7 @@ const Product  = require("../models/Product");
 const User = require("../models/User")
 const multer = require('multer');
 const path = require('path');
+const { userInfo } = require("os");
 
 
 
@@ -97,18 +98,36 @@ const path = require('path');
 
         //Dont Touch This
         router.post("/cart", (req, res) => {
+           
+            console.log(req.user)
+            req.body.displayName = req.user.displayName
+            req.body.email = req.user.email
+            console.log(req.body)
+           
+               
+                User.update({
+                    _id: req.user._id
+                }, {$push:{products:req.body._id}}).then(results => {
+                    results.success = 200
+                     res.json(results)
+                })
+           
 
-            //Saving client to db
-            const userCart = new User(req.body)
-                // console.log(req.body)
-            userCart.save((err) => {
-                // console.log(err)
-                if (err) return res.status(400).json({ success: false, err })
-                return res.status(200).json({ success: true })
-            })
+            // //Saving client to db
+            // const userCart = new User(req.body)
+            //     // console.log(req.body)
+            // userCart.save((err) => {
+            //     // console.log(err)
+            //     if (err) return res.status(400).json({ success: false, err })
+            //     return res.status(200).json({ success: true })
+            // })
         });
 
-
+           router.get("/cart", (req, res) => {
+               User.find({_id: req.user._id}).populate("products").then(results => {
+                   res.json(results)
+               })
+           })  
     
 
 

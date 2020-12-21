@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Axios from 'axios'; 
 import { Row, Col, Card, } from 'antd';
 import { Input } from 'antd';
-
+import {Link} from 'react-router-dom'
 const { Search } = Input;
 
 const {Meta} = Card;
@@ -15,20 +15,14 @@ const Dashboard = () => {
 
     useEffect(() => {
        
-     
-
             Axios.get("/api/product/getProducts")
             .then(response => {
-                console.log(response)
                 if (response.data.success) {
                     setProducts(response.data.product)
-                    console.log(response.data.product)
                 } 
             })
 
     }, [])
-
-
 
     
     const filteredCards = products.filter( product => {
@@ -68,7 +62,7 @@ const Dashboard = () => {
                 <Card 
                 hoverable={true}
                 style={{width: 200}}
-                cover={<a href={`/product/${product._id}`}>
+                cover={<Link to={`/product/${product._id}`}>
 
                     {/* This is the original code that works on heroku */}
                     {/* {<img style={{width: '100%'}} alt="ProductImg" src={`${pictureTwo[pictureTwo.length-1]}`} />} */}
@@ -76,7 +70,7 @@ const Dashboard = () => {
                     {<img style={{width: '100%'}} alt="ProductImg" src={`${imageSrc}`} />}
                    
                   
-                </a>}
+                </Link>}
                 >
                
                 <Meta 
@@ -93,14 +87,13 @@ const Dashboard = () => {
          })
 
 
-
-    
     return(
         <div>
            <br />
            <div style={{textAlign: 'center', marginBottom: '3rem', fontWeight: "bold"}}>
             Search MainHustle Products
             </div>
+
 
             {/* SearchBar */}
             <div>
@@ -110,8 +103,6 @@ const Dashboard = () => {
                 onChange={e => setSearch(e.target.value)}
                 />
             </div>
-
-
 
 
             {products.length === 0 ?

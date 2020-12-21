@@ -19,6 +19,7 @@ export const CartReducer = (state, action) => {
                 })
             } 
 
+                console.log(state.cartItems, "state part")
             return {
                 ...state,
                 ...sumItems(state.cartItems),

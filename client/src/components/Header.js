@@ -2,7 +2,7 @@ import React, {useState, useEffect, useContext} from 'react';
 import Login from './Login';
 import Logout from './Logout';
 import { CartContext } from '../contexts/CartContext';
-
+import {Link} from 'react-router-dom'
 import { Button, Badge } from 'antd';
 import { UploadOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import M from "materialize-css/dist/js/materialize.min.js";
@@ -18,12 +18,6 @@ const Header = () => {
     const handleClick = e => {
       setLoggedIn(!loggedIn);
     };
-
-    // const handleLogout = (e) => {
-    //     e.preventDefault();
-    //     setLoggedIn(false);
-    // }
-
 
 
     useEffect(() => {
@@ -58,39 +52,25 @@ const Header = () => {
                             <Login handleClick={handleClick} />
                         )}
 
-                        {/* {loggedIn ? (
-                            
-                            <Logout
-                            loggedIn={loggedIn} 
-                            handleLogout={handleLogout}
-                            />
-                            
-                        ) : (
-                            <Login
-                            loggedIn={loggedIn} 
-                            handleLogout={handleLogout}
-                            />
-                        )} */}
-
-
-
 
                     </li>
                     <li>
-                        <Button type="primary" shape="round" href="/dashboard">Search</Button>
+                       <Link to="/dashboard" ><Button type="primary" shape="round" >Search</Button></Link> 
                     </li>
                     <li>
-                        <Button type="primary" shape="round" icon={<UploadOutlined />} href="/product/upload"></Button>
+                    <Link to="/product/upload" ><Button type="primary" shape="round" icon={<UploadOutlined />}></Button></Link>
                     </li>
                     <li>
+                    <Link to="/user/cart" >
                         <Badge count={itemCount} >
                         <Button type="primary" shape="round" icon={<ShoppingCartOutlined />} href="/user/cart"></Button>
                         </Badge>
+                    </Link>
                     </li>
                 
-                    <li>
+                    {/* <li>
                         <a href='/api/current_user'>User</a>
-                    </li>
+                    </li> */}
                 </ul>
 
             </div>
@@ -129,16 +109,11 @@ const Header = () => {
             <li><div className="divider"></div></li>
 
         </ul>
-        
-
-
-
     
     </div>
 
 
     )
-
  
 }
 
