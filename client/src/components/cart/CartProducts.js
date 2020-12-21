@@ -16,7 +16,7 @@ const CartProducts = () => {
                 {
                     cartItems.map(product =>  <CartItem key={product.id} product={product}/>)
                 }
-
+                {console.log(cartItems)}
             </div>
         </div>
 

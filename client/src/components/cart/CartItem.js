@@ -52,7 +52,9 @@ const CartItem = ({product}) => {
             </div>
             <div className="col-sm-4 p-2 text-right">
                  <Button 
-                 onClick={() => increase(product)}
+                 onClick={() => 
+                    increase(product)
+                    }
                  type="primary" shape="round">
                      <PlusOutlined width={"20px"}/>
                  </Button>
@@ -69,7 +71,9 @@ const CartItem = ({product}) => {
                 {
                      product.quantity === 1 &&
                      <Button
-                    onClick={() => removeProduct(product)}
+                    onClick={() => {
+                        removeProduct(product)
+                        }}
                     type="danger" shape="round">
                         <DeleteOutlined width={"20px"}/>
                     </Button>

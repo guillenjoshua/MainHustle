@@ -2,14 +2,14 @@ const mongoose = require ('mongoose');
 const { Schema } = mongoose
 
 const productSchema = new Schema ({
-    name: { 
-        type: mongoose.Types.ObjectId,
-        ref: "User"
-    },
-    user: {
-        type: mongoose.Types.ObjectId,
-        ref: "User"
-    }, 
+    // name: { 
+    //     type: mongoose.Types.ObjectId,
+    //     ref: "User"
+    // },
+    // user: {
+    //     type: mongoose.Types.ObjectId,
+    //     ref: "User"
+    // }, 
     title: {
         type: String,
         required: true,

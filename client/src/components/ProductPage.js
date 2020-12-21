@@ -1,9 +1,9 @@
 import React, {useState, useEffect, useContext} from 'react'
-import Axios from 'axios'
+import axios from 'axios'
 import {Row, Col, Descriptions, Button } from 'antd'
-import ImageGallery from 'react-image-gallery';
+// import ImageGallery from 'react-image-gallery';
 import  {CartContext} from '../contexts/CartContext';
-import ProdPageImage from './ProdPageImage'
+
 
 
 function ProductPage(props) {
@@ -16,7 +16,7 @@ function ProductPage(props) {
     console.log(product.image)
     useEffect(() => {
 
-        Axios.get(`/api/product/products_by_id?id=${productId}&type=single`)
+        axios.get(`/api/product/products_by_id?id=${productId}&type=single`)
             .then(response => {
                 setProduct(response.data[0])
                 console.log(response.data[0])
@@ -25,6 +25,28 @@ function ProductPage(props) {
 
 
 
+            
+        const handleClick = (product) =>{
+             console.log(product, "product")   
+            axios.post('/api/product/cart', product)
+            .then(response => {
+                // if (response.data.success) {
+                //     alert('Product Successfully Added to Cart')
+                //     props.history.push('/dashboard')
+                // } else {
+                //     alert('Failed to Add to Cart')
+                // }
+            })
+        }
+
+        // const originalGallery = product.image ? product.image.join("").split("public")[1] : ""
+
+        // const images = [
+            
+        //     {
+        //     original: originalGallery 
+        //     }
+        // ]
 
 
 
@@ -43,10 +65,14 @@ function ProductPage(props) {
     <Row gutter={[16, 16]}>
             {/* <Col lg={12} xs={24}> */}
                     {/* Product Image */}
+
                {/* <ImageGallery  items={images}/> */}
+
+                
+
             
-                {/* <img style={{width: '100%'}} alt="ProductImg" src={`${product.image}`} />  */}
-                {/* <ProdPageImage product={product} /> */}
+                <img style={{width: '50%'}} alt="ProductImg" src={product.image ? product.image.join("").split("public")[1] : ""} /> 
+              { product.image ? console.log(product.image.join("").split("public")[1]) : ""}
                 
             {/* </Col> */}
 
@@ -70,20 +96,28 @@ function ProductPage(props) {
                
                 
                 {
-                    isInCart(product) && 
+                    isInCart(product) ?
                     <Button 
-                    onClick={() => increase(product)}
+                    onClick={() => 
+                        increase(product)  
+                        }
                     type="primary"
                     shape="round">Add on to Cart</Button>
+                    : ""
                 }
-
+    {console.log(isInCart(product))}
 
                 {
-                    !isInCart(product) && 
+                    !isInCart(product) ? 
                     <Button 
-                    onClick={() => addProduct(product)}
+                    onClick={() => {
+                        handleClick(product)
+                        addProduct(product)
+                        
+                    }}
                     type="primary"
                     shape="round">Add to Cart</Button>
+                    :  ""
                 }
 
             </Col>
