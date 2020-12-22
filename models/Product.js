@@ -10,6 +10,9 @@ const productSchema = new Schema ({
     //     type: mongoose.Types.ObjectId,
     //     ref: "User"
     // }, 
+    sellersEmail: {
+        type: String,
+    },
     title: {
         type: String,
         required: true,

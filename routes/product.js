@@ -33,7 +33,8 @@ const { userInfo } = require("os");
     
     //Dont Touch This
     router.post("/uploadProduct", (req, res) => {
-
+        req.body.sellersEmail = req.user.email
+        
         //Saving client to db
         const product = new Product(req.body)
             // console.log(req.body)
@@ -134,6 +135,3 @@ const { userInfo } = require("os");
 
 
 module.exports = router; 
- 
-
-

@@ -36,6 +36,7 @@ function ProductPage(props) {
                 // } else {
                 //     alert('Failed to Add to Cart')
                 // }
+
             })
         }
 
@@ -54,7 +55,6 @@ function ProductPage(props) {
         return !!cartItems.find(item => item.id === product.id);
         }
 
-        
     return (
         <div style={{width: '100%', padding: '3rem 4rem'}}>
             <div style={{textAlign: 'center', marginBottom: '3rem'}}>
@@ -68,15 +68,13 @@ function ProductPage(props) {
 
                {/* <ImageGallery  items={images}/> */}
 
-                
+            
 
             
-                <img style={{width: '50%'}} alt="ProductImg" src={product.image ? product.image.join("").split("public")[1] : ""} /> 
+                <img style={{width: '50%'}} alt="ProductImg" src={product.image ?  product.image.join("").split("build")[1] ? product.image.join("").split("build")[1] : product.image.join("").split("public")[1] : ""} /> 
               { product.image ? console.log(product.image.join("").split("public")[1]) : ""}
                 
             {/* </Col> */}
-
-
             <Col lg={24} xs={24}>
 
 
@@ -90,6 +88,7 @@ function ProductPage(props) {
                     <Descriptions.Item label="Product">{product.title}</Descriptions.Item>
                     <Descriptions.Item label="Amount">${product.price}</Descriptions.Item>
                     <Descriptions.Item label="Description">{product.description}</Descriptions.Item>
+                    <Descriptions.Item label="Contact the Seller">{product.sellersEmail}</Descriptions.Item>
                 </Descriptions>
                     <br />
 

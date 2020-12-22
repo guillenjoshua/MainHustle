@@ -49,7 +49,10 @@ const FrontPage = () => {
           <h5 style={{textAlign: "center"}}>A secure place to easily List, Sell and Search for Products  </h5>
           <br />
           <br />
-            <ImageGallery  items={images} />;
+            <ImageGallery  items={images} />
+            <h7 style={{textAlign: "center"}}>With MainHustle, you can create a listing for a product you want to sell, other users will be able to view your listing and purchase your product!
+            
+            </h7>
         </div>
     )
 }
