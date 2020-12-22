@@ -63,8 +63,8 @@ const CartItem = ({product}) => {
                 
             </div>
             <div className="col-sm-4 p-2">
-                <h5 className="mb-1">{products.title}</h5>
-                <p className="mb-1">Price: ${products.price} </p>
+                <h5 className="mb-1">{product.title}</h5>
+                <p className="mb-1">Price: ${product.price} </p>
                 
             </div>
             <div className="col-sm-2 p-2 text-center ">
