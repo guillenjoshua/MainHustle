@@ -6,14 +6,25 @@ import {Link} from 'react-router-dom'
 import { Button, Badge } from 'antd';
 import { UploadOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import M from "materialize-css/dist/js/materialize.min.js";
-
+import Axios from "../utils/api"
 
 
 const Header = () => {
 
     const [loggedIn, setLoggedIn] = useState(false);
+
     const { itemCount } = useContext(CartContext);
 
+    useEffect(() => {
+        Axios.getCurrentUser().then(user => {
+            console.log(user.data)
+            if (user.data.email) {
+                setLoggedIn(true)
+            }else{
+                setLoggedIn(false)
+            }
+        })
+    },[])
 
     const handleClick = e => {
       setLoggedIn(!loggedIn);
