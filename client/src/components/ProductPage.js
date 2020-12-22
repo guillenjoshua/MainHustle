@@ -49,7 +49,7 @@ function ProductPage(props) {
         //     }
         // ]
 
-
+        // let picture = product.image.join("").split("public")[1]
 
     const isInCart = product => {
         return !!cartItems.find(item => item.id === product.id);
@@ -61,6 +61,8 @@ function ProductPage(props) {
                 <h4>{product.title}</h4>
             </div>
         <br />
+
+    
 
     <Row gutter={[16, 16]}>
             {/* <Col lg={12} xs={24}> */}

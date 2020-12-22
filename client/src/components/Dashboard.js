@@ -33,26 +33,27 @@ const Dashboard = () => {
 
     const renderCards = filteredCards.map((product, index) => {
              
-        let  picture = product.image.join("").split("\\")
-        let imageSrc = ""
+        // Code that works with Dev/Prod if Statement
+        // let  picture = product.image.join("").split("\\")
+        // let imageSrc = ""
         // console.log(picture)
         // let pictureTwo = picture[picture.length-1].split("build")
 
-        if( process.env.NODE_ENV === "production") {
-            // If on heroku use one path
-            let deployeImageUrl= picture[picture.length-1].split("build")
-            imageSrc = deployeImageUrl[deployeImageUrl.length-1]
-          } else {
-            // If local use other path
+        // if( process.env.NODE_ENV === "production") {
+        //     // If on heroku use one path
+        //     let deployeImageUrl= picture[picture.length-1].split("build")
+        //     imageSrc = deployeImageUrl[deployeImageUrl.length-1]
+        //   } else {
+        //     // If local use other path
             
-            let pictureTwo = picture[picture.length-1].split("public")
-            imageSrc = encodeURI(`${pictureTwo[pictureTwo.length-1]}`)
-          }
+        //     let pictureTwo = picture[picture.length-1].split("public")
+        //     imageSrc = encodeURI(`${pictureTwo[pictureTwo.length-1]}`)
+        //   }
 
         //This is the original code that works on heroku
-        // let  picture = product.image.join("").split("\\")
-        // console.log(picture)
-        // let pictureTwo = picture[picture.length-1].split("build")
+            let  picture = product.image.join("").split("\\")
+            console.log(picture)
+            let pictureTwo = picture[picture.length-1].split("build")
 
 
 
@@ -65,9 +66,10 @@ const Dashboard = () => {
                 cover={<Link to={`/product/${product._id}`}>
 
                     {/* This is the original code that works on heroku */}
-                    {/* {<img style={{width: '100%'}} alt="ProductImg" src={`${pictureTwo[pictureTwo.length-1]}`} />} */}
+                    {<img style={{width: '100%'}} alt="ProductImg" src={`${pictureTwo[pictureTwo.length-1]}`} />}
 
-                    {<img style={{width: '100%'}} alt="ProductImg" src={`${imageSrc}`} />}
+                    {/* Code that works with Dev/Prod if Statement */}
+                    {/* {<img style={{width: '100%'}} alt="ProductImg" src={`${imageSrc}`} />} */}
                    
                   
                 </Link>}
@@ -104,6 +106,8 @@ const Dashboard = () => {
                 />
             </div>
 
+            <br />
+            <br />
 
             {products.length === 0 ?
             <div> 
