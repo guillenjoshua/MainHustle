@@ -73,9 +73,9 @@ const Header = () => {
                     </li>
                     <li>
                     <Link to="/user/cart" >
-                        <Badge count={itemCount} >
+                        
                         <Button type="primary" shape="round" icon={<ShoppingCartOutlined />} href="/user/cart"></Button>
-                        </Badge>
+                        
                     </Link>
                     </li>
                 
