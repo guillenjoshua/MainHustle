@@ -48,7 +48,7 @@ function ProductPage(props) {
         //     }
         // ]
 
-
+        // let picture = product.image.join("").split("public")[1]
 
     const isInCart = product => {
         return !!cartItems.find(item => item.id === product.id);
@@ -62,17 +62,20 @@ function ProductPage(props) {
             </div>
         <br />
 
+    
+
     <Row gutter={[16, 16]}>
             {/* <Col lg={12} xs={24}> */}
                     {/* Product Image */}
 
                {/* <ImageGallery  items={images}/> */}
 
-                
-
+                {/* Code that works on Dev and displays the image */}
+               {/* <img style={{width: '30%'}} alt="ProductImg" src={product.image ? product.image.join("").split("public")[1] : ""} /> 
+              { product.image ? console.log(product.image.join("").split("public")[1]) : ""} */}
             
-                <img style={{width: '50%'}} alt="ProductImg" src={product.image ? product.image.join("").split("public")[1] : ""} /> 
-              { product.image ? console.log(product.image.join("").split("public")[1]) : ""}
+                {/* <img style={{width: '50%'}} alt="ProductImg" src={product.image ? product.image.join("").split("public")[1] : ""} /> 
+              { product.image ? console.log(product.image.join("").split("public")[1]) : ""} */}
                 
             {/* </Col> */}
 
