@@ -71,8 +71,8 @@ function ProductPage(props) {
                {/* <ImageGallery  items={images}/> */}
 
                 {/* Code that works on Dev and displays the image */}
-               {/* <img style={{width: '30%'}} alt="ProductImg" src={product.image ? product.image.join("").split("public")[1] : ""} /> 
-              { product.image ? console.log(product.image.join("").split("public")[1]) : ""} */}
+               <img style={{width: '30%'}} alt="ProductImg" src={product.image ? product.image.join("").split("public")[1] : ""} /> 
+              { product.image ? console.log(product.image.join("").split("public")[1]) : ""}
             
                 {/* <img style={{width: '50%'}} alt="ProductImg" src={product.image ? product.image.join("").split("public")[1] : ""} /> 
               { product.image ? console.log(product.image.join("").split("public")[1]) : ""} */}
