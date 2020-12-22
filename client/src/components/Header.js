@@ -114,9 +114,9 @@ const Header = () => {
             <li><div className="divider"></div></li>
 
             <li className="subheader">Go to Cart</li>
-            <Badge count={0} >
+            
                 <Button type="primary" shape="round" icon={<ShoppingCartOutlined />} href="/user/cart"></Button>
-            </Badge>
+            
             <li><div className="divider"></div></li>
 
         </ul>
